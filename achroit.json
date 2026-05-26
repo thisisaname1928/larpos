@@ -1,0 +1,7 @@
+{
+    "componentName": "larpos",
+    "dependencies": [
+        "larpos.kernel"
+    ],
+    "buildCommand": "echo ok"
+}

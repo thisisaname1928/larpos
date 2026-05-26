@@ -1,0 +1,8 @@
+{
+    "componentName": "test",
+    "dependencies": [
+        "sub_folder",
+        "C"
+    ],
+    "buildCommand": "ls"
+}
