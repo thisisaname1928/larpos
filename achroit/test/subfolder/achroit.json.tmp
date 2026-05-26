@@ -1,7 +1,0 @@
-{
-    "componentName": "sub_folder",
-    "dependencies": [
-        "A"
-    ],
-    "buildCommand": "echo \"sub folder built!\""
-}

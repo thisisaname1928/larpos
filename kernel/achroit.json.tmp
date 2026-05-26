@@ -1,5 +1,0 @@
-{
-    "componentName": "larpos.kernel",
-    "dependencies": [],
-    "buildCommand": "make -j8"
-}

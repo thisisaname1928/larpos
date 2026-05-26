@@ -1,5 +1,0 @@
-{
-    "componentName": "B",
-    "dependencies": [],
-    "buildCommand": "echo \"Component B built\""
-}
