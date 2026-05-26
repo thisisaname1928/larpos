@@ -4,3 +4,4 @@ limine.tar.xz
 limine-binary
 iso_root/
 achroit/achroit
+*.tmp
