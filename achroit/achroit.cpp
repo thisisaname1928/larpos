@@ -98,13 +98,15 @@ ArchiotSrcManager::ArchiotSrcManager(const std::string &path) : path(path) {
 
     if (!res) {
       std::cout << "[ERRO] Build failed!\n";
-      break;
+      throw std::runtime_error("ERROR::BUILD_FAILED");
     }
   }
 
   int retcode = buildComponent(curComponent, curComponent.buildPath);
   if (retcode == 0)
     std::cout << "[INFO] Build success!\n";
-  else
+  else {
     std::cout << "[ERRO] Build failed!\n";
+    throw std::runtime_error("ERROR::BUILD_FAILED");
+  }
 }

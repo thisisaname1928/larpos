@@ -1,3 +1,4 @@
+#include "arch/amd64/amd64.hpp"
 #include "kutils.hpp"
 #include <cstdint>
 #include <limine/limine.h>
@@ -38,16 +39,13 @@ void _start() {
   PSF1::parseZapFont();
   konsole::init();
 
-  int c = 0;
+  AMD64::init();
 
-  while (true) {
-    if (c == 0) {
-      kout << "LLL\n";
-      c++;
-    } else {
-      kout << "AAA\n";
-      c = 0;
-    }
-  }
+  kout << "ok!";
+
+  int a = 0;
+  a = 1 / a;
+
+  AMD64::halt();
 }
 }
