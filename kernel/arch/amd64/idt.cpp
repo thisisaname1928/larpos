@@ -1,8 +1,8 @@
-#include "amd64.hpp"
+#include "arch.hpp"
 #include <cstdint>
 #include <kutils.hpp>
 
-namespace AMD64 {
+namespace arch {
 __attribute__((aligned(16))) IDTEntry kernelIDT[256];
 
 IDTR kernelIDTR = {.size = sizeof(IDTEntry), .offset = (uint64_t)&kernelIDT};
@@ -23,9 +23,9 @@ void setIDT(int th, uint64_t offset, uint8_t IST, uint8_t attribute) {
   asm("sti");
 }
 
-extern "C" void exceptionHandler(std::uint64_t errCode, void *stackStart) {
-  kout << "error!\n";
+extern "C" void exceptionHandler(std::uint64_t errCode, void * /*stackStart*/) {
+  kout << "exception occur, code = " << errCode << "!\n";
 
   halt();
 }
-} // namespace AMD64
+} // namespace arch

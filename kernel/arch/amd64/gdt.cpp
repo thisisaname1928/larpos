@@ -1,7 +1,7 @@
-#include "amd64.hpp"
+#include "arch.hpp"
 #include <cstdint>
 
-namespace AMD64 {
+namespace arch {
 std::uint64_t kernelGDT[] = {0x0, 0x00af9a000000ffff, 0x00cf92000000ffff};
 
 GDTR kernelGDTR = {
@@ -9,4 +9,4 @@ GDTR kernelGDTR = {
     .offset = (std::uint64_t)&kernelGDT,
 };
 
-} // namespace AMD64
+} // namespace arch

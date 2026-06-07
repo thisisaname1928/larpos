@@ -45,7 +45,7 @@ ISR_FUNC_%+%1:
     pop rbp
     pop rsi
     pop rdi
-    add rsp, 16
+    add rsp, 8 
     iretq
 %endmacro
 

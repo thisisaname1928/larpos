@@ -30,9 +30,14 @@ char *getZapGlyph(int code);
 extern PSF1::Header *ZapFontHeader;
 extern volatile std::uint32_t *fb_ptr;
 extern limine_framebuffer *fb;
+extern std::uint64_t kernelMappingOffset;
 void kputchar(char ch, int x, int y, std::uint32_t color);
 
+#define HEX(x) (konsole::hex)(x)
+
 namespace konsole {
+typedef unsigned long long hex;
+
 void init();
 void send(std::uint8_t ch);
 extern int height, width;
@@ -41,6 +46,8 @@ extern int x, y;
 class kout {
 public:
   kout &operator<<(const char *rhs);
+  kout &operator<<(std::uint64_t);
+  kout &operator<<(hex n);
 
 private:
 };

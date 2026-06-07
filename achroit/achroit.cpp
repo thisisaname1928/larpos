@@ -1,5 +1,4 @@
 #include "achroit.hpp"
-#include <algorithm>
 #include <cstdlib>
 #include <exception>
 #include <filesystem>

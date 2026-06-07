@@ -144,4 +144,51 @@ konsole::kout &konsole::kout::operator<<(const char *rhs) {
   return *this;
 }
 
+konsole::kout &konsole::kout::operator<<(std::uint64_t n) {
+  if (n == 0) {
+    send('0');
+    return *this;
+  }
+
+  char buffer[20];
+  int c = 0;
+
+  while (n != 0) {
+    buffer[c] = (n % 10);
+    n /= 10;
+    c++;
+  }
+
+  for (int i = c - 1; i >= 0; i--) {
+    send(buffer[i] + 48);
+  }
+
+  return *this;
+}
+
+const char hexTransTab[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                            '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+konsole::kout &konsole::kout::operator<<(hex n) {
+  if (n == 0) {
+    send('0');
+    return *this;
+  }
+
+  char buffer[20];
+  int c = 0;
+
+  while (n != 0) {
+    buffer[c] = (n % 16);
+    n /= 16;
+    c++;
+  }
+
+  for (int i = c - 1; i >= 0; i--) {
+    send(hexTransTab[(int)buffer[i]]);
+  }
+
+  return *this;
+}
+
 konsole::kout kout;

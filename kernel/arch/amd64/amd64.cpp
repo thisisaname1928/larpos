@@ -1,8 +1,8 @@
-#include "amd64.hpp"
+#include "arch.hpp"
 #include "kutils.hpp"
 #include <cstdint>
 
-namespace AMD64 {
+namespace arch {
 std::uint16_t CS, DS;
 
 void doNothing() {}
@@ -25,12 +25,20 @@ void init() {
     setIDT(i, isrFuncTab[i], 0, IDT_PRESENT | IDT_DPL(0) | IDT_TRAP_GATE);
 
   loadIDT64(&kernelIDTR);
+
+  // setup apic
+  if (!initAPIC()) {
+    kout << "init apic failed!\n";
+    halt();
+  } else {
+    kout << "init apic done!\n";
+  }
 }
 
 void halt() {
-  asm("hlt");
+  asm volatile("hlt");
   while (true) {
   }
 }
 
-} // namespace AMD64
+} // namespace arch
